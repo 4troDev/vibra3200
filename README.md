@@ -63,3 +63,25 @@ class LiquidCrystal : public Print {
 
 Error during build: exit status 1```
 </details>
+
+### v2 of that will be used to control the vibration generator for ESP32 Dev Board [Code v3.ino](https://github.com/4troDev/vibra3200/blob/main/v2.ino)
+
+
+<details open>
+<summary>Error </summary> 
+<br>
+/Users/4tro/Documents/Arduino/Blink/Blink.ino: In function 'void setup()':
+/Users/4tro/Documents/Arduino/Blink/Blink.ino:22:18: error: no matching function for call to 'LiquidCrystal_I2C::begin(int, int)'
+   lcd.begin(16, 2);
+                  ^
+In file included from /Users/4tro/Documents/Arduino/Blink/Blink.ino:2:
+/Users/4tro/Documents/Arduino/libraries/LiquidCrystal_I2C/LiquidCrystal_I2C.h:76:7: note: candidate: 'void LiquidCrystal_I2C::begin()'
+  void begin();
+       ^~~~~
+/Users/4tro/Documents/Arduino/libraries/LiquidCrystal_I2C/LiquidCrystal_I2C.h:76:7: note:   candidate expects 0 arguments, 2 provided
+
+exit status 1
+
+Compilation error: no matching function for call to 'LiquidCrystal_I2C::begin(int, int)'</details>
+
+
