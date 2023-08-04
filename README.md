@@ -2,7 +2,7 @@
  The Vibra3200, a DIY vibration generator powered by a microcontroller, is an excellent tool for studying the effects of different vibrations on animals, specifically insects. With its adjustable settings and the ability to reproduce vibrations within a frequency range of 0 to 500 Hz, you can conduct experiments to observe how varying vibrations impact insect behavior, movement, or even physiological responses.
 
 
-# v3 of that will be use to control the vibration generator for ESP32 Dev Board (Code)[]
+# v3 of that will be use to control the vibration generator for ESP32 Dev Board [Code v3.ino](https://github.com/4troDev/vibra3200/blob/main/v3.ino)
 
 
 Error 
