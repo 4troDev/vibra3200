@@ -2,92 +2,62 @@
  The Vibra3200, a DIY vibration generator powered by a microcontroller, is an excellent tool for studying the effects of different vibrations on animals, specifically insects. With its adjustable settings and the ability to reproduce vibrations within a frequency range of 0 to 500 Hz, you can conduct experiments to observe how varying vibrations impact insect behavior, movement, or even physiological responses.
 
 
+## Table of Contents
 
-### v3 of that will be use to control the vibration generator for ESP32 Dev Board [Code v3.ino](https://github.com/4troDev/vibra3200/blob/main/v3.ino)
+ - [Materials](#materials)
+    - [Materials - Rasberry Pi Pico](#materials---rasberry-pi-pico)
+    - [Materials - Arduino](#materials---arduino)
 
-<details open>
-<summary>Error | After checking Arduino forum it might be related to library issue</summary> 
-<br>
-```/usr/local/bin/arduino-cli compile --fqbn esp32:esp32:esp32:CPUFreq=240,DebugLevel=none,EraseFlash=none,EventsCore=1,FlashFreq=80,FlashMode=qio,FlashSize=4M,LoopCore=1,PSRAM=disabled,PartitionScheme=default,UploadSpeed=921600 --build-cache-path /tmp --output-dir /tmp/163488195/build --build-path /tmp/arduino-build-C9D67B84A11F279AFE628B6F98582EDB /tmp/163488195/Vibration
+  - [Getting Started](#getting-started)
+     - [Pi Pico](/Pi-Pico/GettingStarted.md)
+     - [ESP32](/ESP32/GettingStarted.md)
 
-/tmp/163488195/Vibration/Vibration.ino:16:30: error: no matching function for call to 'LiquidCrystal::LiquidCrystal(int, int, int)'
+  - 3D Case
+     - [3D case Download](download.link.here)
+     - [3D case Assembly](/3DCase/Assembly.md)
+  
 
-LiquidCrystal lcd(0x27, 16, 2); // I2C address is 0x27, 16 columns, and 2 rows
+### Materials - Rasberry Pi Pico
 
-^
+- [Raspberry Pi Pico](https://www.raspberrypi.org/products/raspberry-pi-pico/)
 
-In file included from /tmp/163488195/Vibration/Vibration.ino:5:
+- [Vibration Moduel](https://www.amazon.com/Vibration-3-0-5-3v-Interactive-Products-Reminders/dp/B08XXBSF1P/ref=sr_1_7_sspa?keywords=vibration+module&qid=1691768383&sr=8-7-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9tdGY&psc=1)
 
-/home/builder/Arduino/libraries/liquidcrystal_1_0_7/src/LiquidCrystal.h:55:3: note: candidate: 'LiquidCrystal::LiquidCrystal(uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t)'
+- [Jumper Wires](https://www.amazon.com/EDGELEC-Breadboard-Optional-Assorted-Multicolored/dp/B07GD2BWPY/ref=sr_1_3?dchild=1&keywords=jumper+wires&qid=1691768423&sr=8-3)
 
-LiquidCrystal(uint8_t rs, uint8_t enable,
+- [Breadboard](https://www.amazon.com/Breadboards-Solderless-Breadboard-Distribution-Connecting/dp/B07DL13RZH/ref=pd_bxgy_sccl_1/134-8608439-4014425?pd_rd_w=c3qVl&content-id=amzn1.sym.26a5c67f-1a30-486b-bb90-b523ad38d5a0&pf_rd_p=26a5c67f-1a30-486b-bb90-b523ad38d5a0&pf_rd_r=4AVHX1MR92N2M7KWY2HC&pd_rd_wg=kVl1K&pd_rd_r=91773a14-f3c7-4cfd-9371-c0c7dda83063&pd_rd_i=B07DL13RZH&psc=1)
 
-^~~~~~~~~~~~~
+- [LCD Module 20x04 LCD Screen Module Display for Arduino Raspberry Pi](https://www.amazon.com/dp/B0C1G9GBRZ/ref=twister_B0C2H8TPXL?_encoding=UTF8&th=1)
 
-/home/builder/Arduino/libraries/liquidcrystal_1_0_7/src/LiquidCrystal.h:55:3: note: candidate expects 6 arguments, 3 provided
+- [Power Supply](https://www.amazon.com/Breadboard-Minidodoca-Alligator-Raspberry-Electronic/dp/B0BP9V6WXX/ref=sr_1_6?keywords=power%2Bsupply%2Barduino&qid=1691769024&sr=8-6&th=1)
 
-/home/builder/Arduino/libraries/liquidcrystal_1_0_7/src/LiquidCrystal.h:53:3: note: candidate: 'LiquidCrystal::LiquidCrystal(uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t)'
+- [Rotary Encoder](https://www.amazon.com/WayinTop-Degree-Encoder-Development-Arduino/dp/B07T3672VK/ref=sr_1_5?keywords=rotary+encoder&qid=1691769153&sr=8-5)
 
-LiquidCrystal(uint8_t rs, uint8_t rw, uint8_t enable,
+- [2N2222 Transistor](https://www.amazon.com/BOJACK-2N2222-General-Purpose-Transistors/dp/B07T61M92G/ref=sr_1_2_sspa?crid=OU7CH90736DX&keywords=2N2222+Transistor&qid=1691769233&sprefix=2n2222+transistor%2Caps%2C216&sr=8-2-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1)
 
-^~~~~~~~~~~~~
+- [1N4001 Diode](https://www.amazon.com/BOJACK-Values-Rectifier-Schottky-Assortment/dp/B07YG8K1R9/ref=sr_1_2_sspa?keywords=1n4001+diode&qid=1691769331&sr=8-2-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1)
 
-/home/builder/Arduino/libraries/liquidcrystal_1_0_7/src/LiquidCrystal.h:53:3: note: candidate expects 7 arguments, 3 provided
-
-/home/builder/Arduino/libraries/liquidcrystal_1_0_7/src/LiquidCrystal.h:50:3: note: candidate: 'LiquidCrystal::LiquidCrystal(uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t)'
-
-LiquidCrystal(uint8_t rs, uint8_t rw, uint8_t enable,
-
-^~~~~~~~~~~~~
-
-/home/builder/Arduino/libraries/liquidcrystal_1_0_7/src/LiquidCrystal.h:50:3: note: candidate expects 11 arguments, 3 provided
-
-/home/builder/Arduino/libraries/liquidcrystal_1_0_7/src/LiquidCrystal.h:47:3: note: candidate: 'LiquidCrystal::LiquidCrystal(uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t)'
-
-LiquidCrystal(uint8_t rs, uint8_t enable,
-
-^~~~~~~~~~~~~
-
-/home/builder/Arduino/libraries/liquidcrystal_1_0_7/src/LiquidCrystal.h:47:3: note: candidate expects 10 arguments, 3 provided
-
-/home/builder/Arduino/libraries/liquidcrystal_1_0_7/src/LiquidCrystal.h:45:7: note: candidate: 'constexpr LiquidCrystal::LiquidCrystal(const LiquidCrystal&)'
-
-class LiquidCrystal : public Print {
-
-^~~~~~~~~~~~~
-
-/home/builder/Arduino/libraries/liquidcrystal_1_0_7/src/LiquidCrystal.h:45:7: note: candidate expects 1 argument, 3 provided
-
-/home/builder/Arduino/libraries/liquidcrystal_1_0_7/src/LiquidCrystal.h:45:7: note: candidate: 'constexpr LiquidCrystal::LiquidCrystal(LiquidCrystal&&)'
-
-/home/builder/Arduino/libraries/liquidcrystal_1_0_7/src/LiquidCrystal.h:45:7: note: candidate expects 1 argument, 3 provided
-
-Error during build: exit status 1```
-</details>
-
-### v2 of that will be used to control the vibration generator for ESP32 Dev Board [Code v3.ino](https://github.com/4troDev/vibra3200/blob/main/v2.ino)
+- [Sordering Kit - Optional](https://www.amazon.com/Soldering-Iron-Kit-Temperature-Desoldering/dp/B07S61WT16/ref=sr_1_5?crid=1IO2JZ6RRRRWT&keywords=soldering+iron+kit&qid=1691769406&sprefix=SO%2Caps%2C153&sr=8-5)
 
 
-<details open>
-<summary>Error </summary> 
-<br>
-/Users/4tro/Documents/Arduino/Blink/Blink.ino: In function 'void setup()':
-/Users/4tro/Documents/Arduino/Blink/Blink.ino:22:18: error: no matching function for call to 'LiquidCrystal_I2C::begin(int, int)'
-   lcd.begin(16, 2);
-                  ^
-In file included from /Users/4tro/Documents/Arduino/Blink/Blink.ino:2:
-/Users/4tro/Documents/Arduino/libraries/LiquidCrystal_I2C/LiquidCrystal_I2C.h:76:7: note: candidate: 'void LiquidCrystal_I2C::begin()'
-  void begin();
-       ^~~~~
-/Users/4tro/Documents/Arduino/libraries/LiquidCrystal_I2C/LiquidCrystal_I2C.h:76:7: note:   candidate expects 0 arguments, 2 provided
+### Materials - Arduino
 
-exit status 1
+- [ESP32 Dev Board](https://www.amazon.com/ESP-WROOM-32-Development-Microcontroller-Integrated-Compatible/dp/B08D5ZD528/ref=pd_lpo_sccl_2/134-8608439-4014425?pd_rd_w=seEst&content-id=amzn1.sym.116f529c-aa4d-4763-b2b6-4d614ec7dc00&pf_rd_p=116f529c-aa4d-4763-b2b6-4d614ec7dc00&pf_rd_r=ZYEQTJB2NNKBDQCSPZSQ&pd_rd_wg=WU0t3&pd_rd_r=b66f63d4-d013-4530-beed-7b1f9d601d71&pd_rd_i=B08D5ZD528&th=1)
 
-Compilation error: no matching function for call to 'LiquidCrystal_I2C::begin(int, int)'</details>
+- [Vibration Moduel](https://www.amazon.com/Vibration-3-0-5-3v-Interactive-Products-Reminders/dp/B08XXBSF1P/ref=sr_1_7_sspa?keywords=vibration+module&qid=1691768383&sr=8-7-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9tdGY&psc=1)
 
+- [Jumper Wires](https://www.amazon.com/EDGELEC-Breadboard-Optional-Assorted-Multicolored/dp/B07GD2BWPY/ref=sr_1_3?dchild=1&keywords=jumper+wires&qid=1691768423&sr=8-3)
 
+- [Breadboard](https://www.amazon.com/Breadboards-Solderless-Breadboard-Distribution-Connecting/dp/B07DL13RZH/ref=pd_bxgy_sccl_1/134-8608439-4014425?pd_rd_w=c3qVl&content-id=amzn1.sym.26a5c67f-1a30-486b-bb90-b523ad38d5a0&pf_rd_p=26a5c67f-1a30-486b-bb90-b523ad38d5a0&pf_rd_r=4AVHX1MR92N2M7KWY2HC&pd_rd_wg=kVl1K&pd_rd_r=91773a14-f3c7-4cfd-9371-c0c7dda83063&pd_rd_i=B07DL13RZH&psc=1)
 
-### v1 original code from tutorial
-https://github.com/gurgleapps/pico-wave-vibration-generator
+- [LCD Module 20x04 LCD Screen Module Display for Arduino Raspberry Pi](https://www.amazon.com/dp/B0C1G9GBRZ/ref=twister_B0C2H8TPXL?_encoding=UTF8&th=1)
+
+- [Power Supply](https://www.amazon.com/Breadboard-Minidodoca-Alligator-Raspberry-Electronic/dp/B0BP9V6WXX/ref=sr_1_6?keywords=power%2Bsupply%2Barduino&qid=1691769024&sr=8-6&th=1)
+
+- [Rotary Encoder](https://www.amazon.com/WayinTop-Degree-Encoder-Development-Arduino/dp/B07T3672VK/ref=sr_1_5?keywords=rotary+encoder&qid=1691769153&sr=8-5)
+
+- [Sordering Kit - Optional](https://www.amazon.com/Soldering-Iron-Kit-Temperature-Desoldering/dp/B07S61WT16/ref=sr_1_5?crid=1IO2JZ6RRRRWT&keywords=soldering+iron+kit&qid=1691769406&sprefix=SO%2Caps%2C153&sr=8-5)
+
+[Inspiration: Pico Wave Generator by GurgleApps](https://github.com/gurgleapps/pico-wave-vibration-generator)
 
 
